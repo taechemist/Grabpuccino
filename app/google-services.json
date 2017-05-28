@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "608812594838",
+    "firebase_url": "https://grabpuccino.firebaseio.com",
+    "project_id": "grabpuccino",
+    "storage_bucket": "grabpuccino.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:608812594838:android:63545e96aafb23cc",
+        "android_client_info": {
+          "package_name": "com.example.latte.grabpuccino"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "608812594838-n65qqfn8uk1jr0a82naj0l15n3mbcikv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.latte.grabpuccino",
+            "certificate_hash": "2290d5c2cc5f3285143c099f0fda31d28a97d43b"
+          }
+        },
+        {
+          "client_id": "608812594838-9aqfjk8ddu12edj6eukil8stlmuh0itv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLts8IBScFMT2l-9tTbRT3WKYW2VLaMPU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "608812594838-9aqfjk8ddu12edj6eukil8stlmuh0itv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

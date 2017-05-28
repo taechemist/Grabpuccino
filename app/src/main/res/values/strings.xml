@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Grabpuccino</string>
+    <string name="regis_failed">Registration failed</string>
+    <string name="regis_successed">Registered successfully</string>
 </resources>
