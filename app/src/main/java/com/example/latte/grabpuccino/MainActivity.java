@@ -1,5 +1,6 @@
 package com.example.latte.grabpuccino;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -34,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
                 if (user != null) {
                     // User is signed in
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+                    Intent intent = new Intent(MainActivity.this, MapActivity.class);
+                    startActivity(intent);
                 } else {
                     // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
@@ -64,9 +67,30 @@ public class MainActivity extends AppCompatActivity {
                         }
                         else {
                             Toast.makeText(MainActivity.this, R.string.regis_successed,Toast.LENGTH_SHORT).show();
+                            emailText.setText("");
+                            passwordText.setText("");
                         }
+                    }
+                });
+    }
 
-                        // ...
+    public void signIn(View view){
+        String email = emailText.getText().toString();
+        String password = passwordText.getText().toString();
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
+
+                        // If sign in fails, display a message to the user. If sign in succeeds
+                        // the auth state listener will be notified and logic to handle the
+                        // signed in user can be handled in the listener.
+                        if (!task.isSuccessful()) {
+                            Log.w(TAG, "signInWithEmail:failed", task.getException());
+                            Toast.makeText(MainActivity.this, R.string.auth_failed,
+                                    Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
     }
