@@ -64,9 +64,8 @@ public class MainActivity extends AppCompatActivity {
                         if (!task.isSuccessful()) {
                             Toast.makeText(MainActivity.this, R.string.regis_failed,
                                     Toast.LENGTH_SHORT).show();
-                        }
-                        else {
-                            Toast.makeText(MainActivity.this, R.string.regis_successed,Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(MainActivity.this, R.string.regis_successed, Toast.LENGTH_SHORT).show();
                             emailText.setText("");
                             passwordText.setText("");
                         }
@@ -74,25 +73,34 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
-    public void signIn(View view){
+    public void signIn(View view) {
         String email = emailText.getText().toString();
         String password = passwordText.getText().toString();
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
+        if (validateEmailAndPassword(email, password)) {
+            mAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
 
-                        // If sign in fails, display a message to the user. If sign in succeeds
-                        // the auth state listener will be notified and logic to handle the
-                        // signed in user can be handled in the listener.
-                        if (!task.isSuccessful()) {
-                            Log.w(TAG, "signInWithEmail:failed", task.getException());
-                            Toast.makeText(MainActivity.this, R.string.auth_failed,
-                                    Toast.LENGTH_SHORT).show();
+                            // If sign in fails, display a message to the user. If sign in succeeds
+                            // the auth state listener will be notified and logic to handle the
+                            // signed in user can be handled in the listener.
+                            if (!task.isSuccessful()) {
+                                Log.w(TAG, "signInWithEmail:failed", task.getException());
+                                Toast.makeText(MainActivity.this, R.string.auth_failed,
+                                        Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    }
-                });
+                    });
+        } else {
+            Toast.makeText(this, R.string.please_insert_email_and_password, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.you_are_here, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private boolean validateEmailAndPassword(String email, String password) {
+        return email != null && !email.isEmpty() && password != null && !password.isEmpty();
     }
 
     @Override

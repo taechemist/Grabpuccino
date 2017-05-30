@@ -3,4 +3,6 @@
     <string name="regis_failed">Registration failed</string>
     <string name="regis_successed">Registered successfully</string>
     <string name="auth_failed">Authentication failed</string>
+    <string name="please_insert_email_and_password">Please insert email and password</string>
+    <string name="you_are_here">you_are_here</string>
 </resources>
