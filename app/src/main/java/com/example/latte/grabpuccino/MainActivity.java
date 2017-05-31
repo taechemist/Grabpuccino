@@ -25,8 +25,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
+        setupFirebaseAuth();
+
+        emailText = (EditText) findViewById(R.id.username);
+        passwordText = (EditText) findViewById(R.id.password);
+
+        debugUsernamePassword();
+
+    }
+
+    private void setupFirebaseAuth() {
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -44,9 +54,13 @@ public class MainActivity extends AppCompatActivity {
                 // ...
             }
         };
+    }
 
-        emailText = (EditText) findViewById(R.id.username);
-        passwordText = (EditText) findViewById(R.id.password);
+    private void debugUsernamePassword() {
+        if(BuildConfig.DEBUG) {
+            emailText.setText("test@g.com");
+            passwordText.setText("qwerty");
+        }
     }
 
     public void createAccount(View view) {
@@ -76,11 +90,13 @@ public class MainActivity extends AppCompatActivity {
     public void signIn(View view) {
         String email = emailText.getText().toString();
         String password = passwordText.getText().toString();
+        // Show loading dialog
         if (validateEmailAndPassword(email, password)) {
             mAuth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
+                            // Hide loading dialog
                             Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
 
                             // If sign in fails, display a message to the user. If sign in succeeds

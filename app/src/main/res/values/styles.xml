@@ -9,7 +9,46 @@
     </style>
 
     <style name="LoginTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    </style>
+
+    <style name="TextView">
 
     </style>
+
+    <style name="TextView.White">
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="TextView.White.Title1">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="TextView.White.Title2">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="TextView.White.Content">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="EditText">
+        <item name="android:textColor">#c7c7c7</item>
+        <item name="android:background">@drawable/shape_edit_text</item>
+
+
+    </style>
+
+    <style name="TextView.Brown">
+
+        <item name="android:textColor">#683805</item>
+    </style>
+
+    <style name="TextView.Brown.Title1">
+
+        <item name="android:textSize">24sp</item>
+    </style>
+
+
+
 
 </resources>
