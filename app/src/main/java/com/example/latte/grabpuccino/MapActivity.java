@@ -33,9 +33,9 @@ public class MapActivity extends AppCompatActivity {
         }
 
 
-
-
     }
+
+
 
     public void signOut(View view) {
         FirebaseAuth.getInstance().signOut();
