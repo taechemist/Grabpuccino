@@ -3,63 +3,74 @@ package com.example.latte.grabpuccino;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.TextView;
+
+import com.firebase.ui.database.FirebaseListAdapter;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MenuActivity extends AppCompatActivity {
 
-    ListView list;
-    String[] itemname ={
-            "Safari",
-            "Camera",
-            "Global",
-            "FireFox",
-            "UC Browser",
-            "Android Folder",
-            "VLC Player",
-            "Cold War",
-            "Grape",
-            "Macbook",
-            "iOS",
-            "Eleven",
-            "Glass",
-            "Japan"
-    };
-
-    Integer[] imgid={
-            R.drawable.pic1,
-            R.drawable.pic2,
-            R.drawable.pic3,
-            R.drawable.pic4,
-            R.drawable.pic5,
-            R.drawable.pic6,
-            R.drawable.pic7,
-            R.drawable.pic8,
-            R.drawable.pic8,
-            R.drawable.pic8,
-            R.drawable.pic8,
-            R.drawable.pic8,
-            R.drawable.pic8,
-            R.drawable.pic8,
-    };
+    private String TAG = "MenuActivity";
+    private final String REF = "vendors";
+    FirebaseListAdapter<Vendor> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        CustomListAdapter adapter=new CustomListAdapter(this, itemname, imgid);
-        list=(ListView)findViewById(R.id.coffeeList);
-        list.setAdapter(adapter);
-
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        ListView listView = (ListView) findViewById(R.id.coffeeList);
+        adapter = new FirebaseListAdapter<Vendor>(this, Vendor.class, R.layout.mylist, FirebaseDatabase.getInstance().getReference(REF)){
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String Slecteditem= itemname[+position];
-                Toast.makeText(getApplicationContext(), Slecteditem, Toast.LENGTH_SHORT).show();
+            protected void populateView(View v, Vendor model, int position) {
+                TextView nameText = (TextView) v.findViewById(R.id.nameOnList);
+                TextView detailText = (TextView) v.findViewById(R.id.detailsOnList);
+                ImageView iconImage = (ImageView) v.findViewById(R.id.iconOnList);
+
+                nameText.setText(model.getName());
+                detailText.setText(model.getDetails());
+                String icon = "icon_"+model.getIcon();
+                int rID = getResources().getIdentifier(icon, "drawable", getPackageName());
+                iconImage.setImageResource(rID);
             }
-        });
+        };
+
+        listView.setAdapter(adapter);
+
+//        // Write a message to the database
+//        FirebaseDatabase database = FirebaseDatabase.getInstance();
+//        DatabaseReference myRef = database.getReference("vendors");
+//
+//        // Read from the database
+//        myRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                // This method is called once with the initial value and again
+//                // whenever data at this location is updated.
+////                JSONObject value = dataSnapshot.getValue(JSONObject.class);
+////                Log.d(TAG, value.toString());
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError error) {
+//                // Failed to read value
+//                Log.w(TAG, "Failed to read value.", error.toException());
+//            }
+//        });
+
+//        CustomListAdapter adapter=new CustomListAdapter(this, itemname, imgid);
+//        list=(ListView)findViewById(R.id.coffeeList);
+//        list.setAdapter(adapter);
+//
+//        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                String Slecteditem= itemname[+position];
+//                Toast.makeText(getApplicationContext(), Slecteditem, Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
 
     }
