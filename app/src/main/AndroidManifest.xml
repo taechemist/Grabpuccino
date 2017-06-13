@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.latte.grabpuccino">
 
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
@@ -22,17 +21,17 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".MapActivity"
+            android:theme="@style/LoginTheme" />
+        <activity android:name=".MenuActivity"></activity>
+
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyA2idNpHziQ2LVK31_xj0nGnu28CLxxDkY" />
-
-        <activity
-            android:name=".MapActivity"
-            android:theme="@style/LoginTheme" />
-        <activity android:name=".MenuActivity"></activity>
     </application>
 
 </manifest>
