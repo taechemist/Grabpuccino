@@ -41,5 +41,14 @@ public class Vendor {
     public void setDetails(String details) {
         this.details = details;
     }
+
+    @Override
+    public String toString() {
+        return "Vendor{" +
+                "name='" + name + '\'' +
+                ", icon='" + icon + '\'' +
+                ", details='" + details + '\'' +
+                '}';
+    }
 }
 
