@@ -3,10 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.latte.grabpuccino.checkout">
-
+    android:layout_height="match_parent"
+    tools:context="com.example.latte.grabpuccino.status">
 
     <FrameLayout
         android:id="@+id/header"
@@ -30,11 +29,11 @@
 
 
             <TextView
-                android:id="@+id/orderName"
+                android:id="@+id/statusName"
                 style="@style/TextView.White.Title1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Placing order " />
+                android:text="Your Coffee Status" />
 
 
         </LinearLayout>
@@ -51,33 +50,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Your Order"
+            android:text="Your Order Status"
             style="@style/TextView.Brown.Title1" />
 
-        <ImageView
-            android:id="@+id/coffeeImage"
-            android:layout_marginLeft="20dp"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:src="@drawable/icon_starbucks"/>
-
         <TextView
+            android:id="@+id/statusText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            />
+            android:layout_gravity="center"
+            android:text="Making..."/>
 
-        <Button
-            android:id="@+id/checkoutBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Check out"/>
-
-        <Button
-            android:id="@+id/cancelBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cancel"/>
-    </LinearLayout>
-
+        </LinearLayout>
 
 </LinearLayout>
