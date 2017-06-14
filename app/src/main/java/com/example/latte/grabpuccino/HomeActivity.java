@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseListAdapter;
@@ -28,6 +29,7 @@ public class HomeActivity extends AppCompatActivity {
     FirebaseListAdapter<Vendor> adapter;
     private DatabaseReference shopDatabase;
     private List<Vendor> vendors;
+    private ListView shopListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +40,7 @@ public class HomeActivity extends AppCompatActivity {
         shopDatabase = FirebaseDatabase.getInstance().getReference(REF);
 
         //rendering data into ListView
-        ListView shopListView = (ListView) findViewById(R.id.shopList);
+        shopListView = (ListView) findViewById(R.id.shopList);
         getVendorList(shopListView);
 
         //reading realtime data from Firebase
@@ -65,7 +67,7 @@ public class HomeActivity extends AppCompatActivity {
                 // Get vendor object and use the values to update the UI
                 GenericTypeIndicator<List<Vendor>> t = new GenericTypeIndicator<List<Vendor>>() {};
                 vendors = dataSnapshot.getValue(t);
-//                Log.d(TAG, vendors.get(1).getName());
+                //Log.d(TAG, vendors.get(1).getName());
             }
 
             @Override
@@ -93,6 +95,15 @@ public class HomeActivity extends AppCompatActivity {
                 String icon = "icon_"+model.getIcon();
                 int rID = getResources().getIdentifier(icon, "drawable", getPackageName());
                 iconImage.setImageResource(rID);
+            }
+
+            @Override
+            protected void onDataChanged() {
+                //Hide progress bar and show no message if there is no data
+                ProgressBar progressBarForList = (ProgressBar) findViewById(R.id.listProgressBar);
+                progressBarForList.setVisibility(View.GONE);
+                TextView listEmptyText = (TextView) findViewById(R.id.listEmpty);
+                shopListView.setEmptyView(listEmptyText);
             }
         };
         listview.setAdapter(adapter);

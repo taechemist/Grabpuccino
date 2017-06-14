@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseListAdapter;
@@ -27,6 +28,7 @@ public class MenuActivity extends AppCompatActivity {
     FirebaseListAdapter<Coffee> adapter;
     private DatabaseReference coffeeDatabase;
     private List<Coffee> menus;
+    private ListView menuListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +42,7 @@ public class MenuActivity extends AppCompatActivity {
         coffeeDatabase = FirebaseDatabase.getInstance().getReference(REF).child(vendorIdText);
         getMenuData();
 
-        ListView menuListView = (ListView) findViewById(R.id.coffeeList);
+        menuListView = (ListView) findViewById(R.id.coffeeList);
         getMenuList(menuListView);
 
     }
@@ -80,6 +82,15 @@ public class MenuActivity extends AppCompatActivity {
                 String icon = "icon_"+model.getIcon();
                 int rID = getResources().getIdentifier(icon, "drawable", getPackageName());
                 iconImage.setImageResource(rID);
+            }
+
+            @Override
+            protected void onDataChanged() {
+                //Hide progress bar and show no message if there is no data
+                ProgressBar progressBarForList = (ProgressBar) findViewById(R.id.listProgressBar);
+                progressBarForList.setVisibility(View.GONE);
+                TextView listEmptyText = (TextView) findViewById(R.id.listEmpty);
+                menuListView.setEmptyView(listEmptyText);
             }
         };
         listview.setAdapter(adapter);
