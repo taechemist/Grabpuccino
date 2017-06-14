@@ -9,8 +9,8 @@
 
 
     <FrameLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,14 +32,13 @@
 
                     android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
 
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="20dp"
-                    android:src="@drawable/hamburgerbar" />
-
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginTop="20dp"
+                        android:src="@drawable/hamburgerbar" />
 
 
                     <TextView
@@ -67,9 +66,34 @@
 
             </ListView>
 
+
         </LinearLayout>
 
+
     </FrameLayout>
+
+    <Button
+        android:id="@+id/vendorBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="Vendor" />
+
+    <Button
+        android:id="@+id/signOutBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/vendorBtn"
+        android:text="Sign out" />
+
+    <Button
+        android:id="@+id/statusBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/signOutBtn"
+        android:text="status" />
 
     <FrameLayout
         android:layout_width="250dp"
