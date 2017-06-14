@@ -82,23 +82,28 @@
         android:textSize="15dp"
         android:textStyle="bold"/>
 
+        <Button
+            android:onClick="createAccount"
+            android:id="@+id/signUpBtn"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:text="Sign up"
+            android:textAllCaps="false" />
         </RelativeLayout>
 
 
-    <Button
-        android:onClick="createAccount"
-        android:id="@+id/signUpBtn"
-        android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="Sign up"
-        android:textAllCaps="false" />
+
 
     <FrameLayout
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="match_parent"
-        android:background="#77000000">
 
+        android:background="#020101">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </FrameLayout>
 </RelativeLayout>
