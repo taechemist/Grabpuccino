@@ -25,12 +25,7 @@
                 android:layout_height="150dp"
                 android:background="@color/sunflower">
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="20dp"
-                    android:src="@drawable/hamburgerbar" />
+
 
                 <LinearLayout
                     android:layout_width="350dp"
