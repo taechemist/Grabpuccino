@@ -3,7 +3,7 @@ package com.example.latte.grabpuccino;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class checkout extends AppCompatActivity {
+public class Checkout extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

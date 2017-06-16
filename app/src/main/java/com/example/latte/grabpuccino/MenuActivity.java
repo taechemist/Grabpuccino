@@ -36,7 +36,7 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
 
         Intent intent = getIntent();
-        int vendorId = intent.getIntExtra("vendorId", 0);
+        int vendorId = intent.getIntExtra("vendorId", -1);
         String vendorIdText = Integer.toString(vendorId);
 
         coffeeDatabase = FirebaseDatabase.getInstance().getReference(REF).child(vendorIdText);

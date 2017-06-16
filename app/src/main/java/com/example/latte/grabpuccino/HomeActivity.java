@@ -53,7 +53,7 @@ public class HomeActivity extends AppCompatActivity {
 //                String item = vendors.get(position+1).getName();
 
                 Intent intent = new Intent(HomeActivity.this, MenuActivity.class);
-                intent.putExtra("vendorId", position+1);
+                intent.putExtra("vendorId", position);
                 startActivity(intent);
             }
         });
