@@ -134,4 +134,9 @@ public class MainActivity extends AppCompatActivity {
             mAuth.removeAuthStateListener(mAuthListener);
         }
     }
+
+    public void signOut(View view) {
+        FirebaseAuth.getInstance().signOut();
+    }
+
 }

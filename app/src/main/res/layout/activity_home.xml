@@ -134,7 +134,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:layout_alignParentRight="true"
-                android:text="Sign out" />
+                android:text="Sign out"
+                android:onClick="signOut"
+                />
 
             <Button
                 android:id="@+id/vendorBtn"
