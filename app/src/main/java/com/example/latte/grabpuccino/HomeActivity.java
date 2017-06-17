@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -24,9 +25,9 @@ import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private String TAG = "HomeActivity";
     private final String REF = "vendors";
     FirebaseListAdapter<Vendor> adapter;
+    private String TAG = "HomeActivity";
     private DatabaseReference shopDatabase;
     private List<Vendor> vendors;
     private ListView shopListView;
@@ -65,7 +66,8 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // Get vendor object and use the values to update the UI
-                GenericTypeIndicator<List<Vendor>> t = new GenericTypeIndicator<List<Vendor>>() {};
+                GenericTypeIndicator<List<Vendor>> t = new GenericTypeIndicator<List<Vendor>>() {
+                };
                 vendors = dataSnapshot.getValue(t);
                 //Log.d(TAG, vendors.get(1).getName());
             }
@@ -83,7 +85,7 @@ public class HomeActivity extends AppCompatActivity {
     @NonNull
     private void getVendorList(ListView listview) {
         //rendering data into ListView
-        adapter = new FirebaseListAdapter<Vendor>(this, Vendor.class, R.layout.list_vendor, shopDatabase){
+        adapter = new FirebaseListAdapter<Vendor>(this, Vendor.class, R.layout.list_vendor, shopDatabase) {
             @Override
             protected void populateView(View v, Vendor model, int position) {
                 TextView nameText = (TextView) v.findViewById(R.id.nameOnList);
@@ -92,7 +94,7 @@ public class HomeActivity extends AppCompatActivity {
 
                 nameText.setText(model.getName());
                 detailText.setText(model.getDetails());
-                String icon = "icon_"+model.getIcon();
+                String icon = "icon_" + model.getIcon();
                 int rID = getResources().getIdentifier(icon, "drawable", getPackageName());
                 iconImage.setImageResource(rID);
             }
@@ -107,5 +109,14 @@ public class HomeActivity extends AppCompatActivity {
             }
         };
         listview.setAdapter(adapter);
+    }
+
+    public void onClickHamburgerBar(View view) {
+        FrameLayout munuOverlay = (FrameLayout) findViewById(R.id.menuOverlay);
+        if (munuOverlay.getVisibility() == View.GONE) {
+            munuOverlay.setVisibility(View.VISIBLE);
+        } else {
+            munuOverlay.setVisibility(View.GONE);
+        }
     }
 }
