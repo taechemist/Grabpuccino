@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -29,6 +30,7 @@ public class MenuActivity extends AppCompatActivity {
     private DatabaseReference coffeeDatabase;
     private List<Coffee> menus;
     private ListView menuListView;
+    private int vendorId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,14 +38,24 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
 
         Intent intent = getIntent();
-        int vendorId = intent.getIntExtra("vendorId", -1);
+        vendorId = intent.getIntExtra("vendorId", -1);
         String vendorIdText = Integer.toString(vendorId);
 
         coffeeDatabase = FirebaseDatabase.getInstance().getReference(REF).child(vendorIdText);
-        getMenuData();
+//        getMenuData();
 
         menuListView = (ListView) findViewById(R.id.coffeeList);
         getMenuList(menuListView);
+
+        menuListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent2 = new Intent(MenuActivity.this, Checkout.class);
+                intent2.putExtra("vendorId", vendorId);
+                intent2.putExtra("menuId", position);
+                startActivity(intent2);
+            }
+        });
 
     }
 
@@ -78,7 +90,7 @@ public class MenuActivity extends AppCompatActivity {
                 ImageView iconImage = (ImageView) v.findViewById(R.id.iconOnList);
 
                 nameText.setText(model.getName());
-                detailText.setText(Double.toString(model.getPrice()));
+                detailText.setText("$"+model.getPrice());
                 String icon = "icon_"+model.getIcon();
                 int rID = getResources().getIdentifier(icon, "drawable", getPackageName());
                 iconImage.setImageResource(rID);

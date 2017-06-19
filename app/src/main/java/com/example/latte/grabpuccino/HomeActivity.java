@@ -45,7 +45,7 @@ public class HomeActivity extends AppCompatActivity {
         getVendorList(shopListView);
 
         //reading realtime data from Firebase
-        getVendorData();
+//        getVendorData();
 
         shopListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
