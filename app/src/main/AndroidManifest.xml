@@ -35,7 +35,6 @@
 
         <activity android:name=".HomeActivity" />
         <activity android:name=".Checkout" />
-        <activity android:name=".Status"></activity>
     </application>
 
 </manifest>
