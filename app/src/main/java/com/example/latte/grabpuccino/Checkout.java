@@ -23,6 +23,8 @@ public class Checkout extends AppCompatActivity {
     private TextView coffeeDescription;
     private ImageView coffeeImage;
     private TextView statusText;
+    private String vendorIdString;
+    private String menuIdString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +34,8 @@ public class Checkout extends AppCompatActivity {
         Intent intent = getIntent();
         int vendorId = intent.getIntExtra("vendorId", 0);
         int menuId = intent.getIntExtra("menuId", 0);
-        String vendorIdString = Integer.toString(vendorId);
-        String menuIdString = Integer.toString(menuId);
+        vendorIdString = Integer.toString(vendorId);
+        menuIdString = Integer.toString(menuId);
 
         menuDatabase = FirebaseDatabase.getInstance().getReference(REF).child(vendorIdString).child(menuIdString);
         getMenuData();
@@ -65,5 +67,29 @@ public class Checkout extends AppCompatActivity {
             }
         };
         menuDatabase.addValueEventListener(vendorListener);
+    }
+
+    private void placeOrder() {
+        Order order = new Order(menuIdString, vendorIdString, "preparing order...");
+        FirebaseDatabase.getInstance().getReference("order").push().setValue(order);
+
+    }
+
+    private void getOrderData(){
+        DatabaseReference database = FirebaseDatabase.getInstance().getReference("order");
+        database.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Order order = dataSnapshot.getValue(Order.class);
+                statusText.setText(order.getStatus());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+            }
+        });
+
+
     }
 }
