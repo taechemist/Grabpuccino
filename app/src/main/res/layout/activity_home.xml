@@ -110,39 +110,50 @@
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="30dp"
                 android:src="@drawable/user" />
 
             <TextView
-                style="@style/TextView.Brown"
+                style="@style/TextView.Brown.Title3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+
                 android:text="kochakorn.k@gmail.com" />
 
             <Button
                 android:id="@+id/statusBtn"
+                style="@style/TextView.Brown"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:layout_marginTop="20sp"
                 android:background="@drawable/selector_button_login_background"
-                android:text="@string/status" />
+                android:text="@string/status"
+                android:textAllCaps="false" />
 
             <Button
                 android:id="@+id/signOutBtn"
+                style="@style/TextView.White"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:layout_alignParentRight="true"
-                android:text="Sign out"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shape_button_signout"
                 android:onClick="signOut"
-                />
+                android:text="Sign out"
+                android:textAllCaps="false" />
 
             <Button
                 android:id="@+id/vendorBtn"
+                style="@style/TextView.White"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
-                android:text="Vendor" />
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shape_button_login_pressed"
+                android:text="Vendor"
+                android:textAllCaps="false" />
 
         </LinearLayout>
 

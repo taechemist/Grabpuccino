@@ -139,7 +139,7 @@
             android:layout_height="wrap_content"
 
             android:background="@drawable/selector_shape_button_background"
-            android:text="Confirm Order"
+            android:text="@string/serve"
             android:textAllCaps="false" />
     </LinearLayout>
 
