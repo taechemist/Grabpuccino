@@ -129,6 +129,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/selector_button_login_background"
             android:text="Place Order"
+            android:onClick="placeOrder"
             android:textAllCaps="false" />
 
         <Button
@@ -142,6 +143,7 @@
             android:textAllCaps="false" />
 
         <Button
+            android:onClick="onServe"
             android:id="@+id/ServeBtn"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"

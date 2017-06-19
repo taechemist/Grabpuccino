@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -69,10 +71,11 @@ public class Checkout extends AppCompatActivity {
         menuDatabase.addValueEventListener(vendorListener);
     }
 
-    private void placeOrder() {
-        Order order = new Order(menuIdString, vendorIdString, "preparing order...");
-        FirebaseDatabase.getInstance().getReference("order").push().setValue(order);
-
+    public void placeOrder(View view) {
+        FirebaseDatabase.getInstance().getReference("order").child("menuId").setValue(menuIdString);
+        FirebaseDatabase.getInstance().getReference("order").child("vendorId").setValue(vendorIdString);
+        FirebaseDatabase.getInstance().getReference("order").child("status").setValue("Preparing your order...");
+        getOrderData();
     }
 
     private void getOrderData(){
@@ -80,8 +83,11 @@ public class Checkout extends AppCompatActivity {
         database.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Order order = dataSnapshot.getValue(Order.class);
-                statusText.setText(order.getStatus());
+                String statusData = dataSnapshot.child("status").getValue().toString();
+                LinearLayout layout = (LinearLayout) findViewById(R.id.status);
+                layout.setVisibility(View.VISIBLE);
+                statusText.setText(statusData);
+//                Log.d(TAG, order.getStatus());
             }
 
             @Override
@@ -89,7 +95,9 @@ public class Checkout extends AppCompatActivity {
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         });
+    }
 
-
+    public void onServe(View view) {
+        FirebaseDatabase.getInstance().getReference("order").child("status").setValue("Your order is ready");
     }
 }
