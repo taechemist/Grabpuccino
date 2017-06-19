@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -91,5 +92,10 @@ public class Checkout extends AppCompatActivity {
         });
 
 
+    }
+
+    public void backOnBtn(View view){
+        Intent intent = new Intent(this, HomeActivity.class );
+        startActivity(intent);
     }
 }

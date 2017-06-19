@@ -14,4 +14,5 @@
     <string name="password">Password</string>
     <string name="name">Name</string>
     <string name="your_order_status">Your Order Status</string>
+    <string name="cancel">Cancel</string>
 </resources>
