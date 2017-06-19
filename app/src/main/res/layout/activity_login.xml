@@ -20,7 +20,7 @@
 
             <TextView
                 android:id="@+id/textView"
-                style="@style/TextView.White.Title1"
+                style="@style/TextView.Brown.Bold.Title1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/welcome_back"
@@ -30,7 +30,7 @@
 
             <TextView
                 android:id="@+id/textView2"
-                style="@style/TextView.White.Title2"
+                style="@style/TextView.Brown.Title2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -44,11 +44,12 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Name" />
+                android:text="@string/name" />
 
             <EditText
                 android:id="@+id/password"
                 android:layout_marginTop="10dp"
+                android:hint="@string/password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape_edit_text"
@@ -58,6 +59,7 @@
             <Button
                 android:id="@+id/loginBtn"
                 android:layout_marginTop="10dp"
+                style="@style/TextView.Lightbrown.Title3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Log in"
@@ -84,7 +86,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/not_a_member"
-            style="@style/TextView.Brown.Title1"
+            style="@style/TextView.Brown.Bold.Title1"
             android:gravity="center"
             android:layout_marginTop="30dp"
 
@@ -94,6 +96,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/sign_up"
+            style="@style/TextView.Brown.Title3"
+            android:textAllCaps="false"
             android:onClick="createAccount"
             android:background="@drawable/selector_shape_button_background"
             android:layout_marginTop="10dp"

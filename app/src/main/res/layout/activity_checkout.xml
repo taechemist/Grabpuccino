@@ -68,22 +68,24 @@
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_marginLeft="20dp"
-                android:src="@drawable/icon_starbucks" />
+                android:src="@drawable/icon_starbucks"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="19dp" />
 
             <TextView
                 android:id="@+id/coffeeName"
-
-                style="@style/TextView.Lightbrown"
+                style="@style/TextView.Lightbrown.Title2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_toRightOf="@+id/coffeeImage"
                 android:text="Your order is: XXXXXX" />
 
             <TextView
                 android:id="@+id/coffeeLocation"
-                style="@style/TextView.Lightbrown"
+                style="@style/TextView.Lightbrown.Title3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/coffeeName"
@@ -99,6 +101,7 @@
             android:layout_gravity="center"
             android:orientation="vertical"
             android:paddingBottom="20dp"
+
             android:paddingTop="20dp">
 
             <TextView
@@ -120,6 +123,7 @@
 
         <Button
             android:id="@+id/checkoutBtn"
+            style="@style/TextView.Brown.Title3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/selector_button_login_background"
@@ -128,18 +132,22 @@
 
         <Button
             android:id="@+id/cancelBtn"
+            style="@style/TextView.White.Title3"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/shape_button_signout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Cancel"
             android:textAllCaps="false" />
 
         <Button
-            android:id="@+id/confirmBtn"
+            android:id="@+id/ServeBtn"
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+            style="@style/TextView.Brown.Title3"
             android:background="@drawable/selector_shape_button_background"
-            android:text="Confirm Order"
+            android:text="@string/serve"
             android:textAllCaps="false" />
     </LinearLayout>
 
