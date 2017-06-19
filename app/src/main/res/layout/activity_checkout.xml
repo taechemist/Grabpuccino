@@ -153,7 +153,8 @@
             style="@style/TextView.Brown.Title3"
             android:background="@drawable/selector_shape_button_background"
             android:text="@string/serve"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            />
     </LinearLayout>
 
 

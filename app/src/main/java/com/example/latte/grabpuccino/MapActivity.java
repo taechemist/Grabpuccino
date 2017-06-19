@@ -1,6 +1,6 @@
 package com.example.latte.grabpuccino;
 
-import android.content.Intent;
+import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.net.Uri;
@@ -9,12 +9,9 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-import android.Manifest;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
@@ -125,13 +122,6 @@ public class MapActivity extends AppCompatActivity implements
     @Override
     public void onConnectionSuspended(int i) {
 
-    }
-
-
-    public void signOut(View view) {
-        FirebaseAuth.getInstance().signOut();
-        Intent intent = new Intent(MapActivity.this, MainActivity.class);
-        startActivity(intent);
     }
 
     @Override

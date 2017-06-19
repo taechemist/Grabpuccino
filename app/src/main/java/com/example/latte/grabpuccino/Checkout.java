@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -27,6 +29,8 @@ public class Checkout extends AppCompatActivity {
     private TextView statusText;
     private String vendorIdString;
     private String menuIdString;
+    private Button serveBtn;
+    private Button checkBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +50,8 @@ public class Checkout extends AppCompatActivity {
         coffeeDescription = (TextView) findViewById(R.id.coffeeLocation);
         coffeeImage = (ImageView) findViewById(R.id.coffeeImage);
         statusText = (TextView) findViewById(R.id.statusText);
+        checkBtn = (Button) findViewById(R.id.checkoutBtn);
+        serveBtn = (Button) findViewById(R.id.ServeBtn);
     }
 
     private void getMenuData() {
@@ -76,6 +82,11 @@ public class Checkout extends AppCompatActivity {
         FirebaseDatabase.getInstance().getReference("order").child("vendorId").setValue(vendorIdString);
         FirebaseDatabase.getInstance().getReference("order").child("status").setValue("Preparing your order...");
         getOrderData();
+
+//        checkBtn.setVisibility(View.INVISIBLE);
+//        serveBtn.setVisibility(View.VISIBLE);
+//        checkBtn.setEnabled(false);
+//        serveBtn.setEnabled(true);
     }
 
     private void getOrderData(){
@@ -85,9 +96,12 @@ public class Checkout extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String statusData = dataSnapshot.child("status").getValue().toString();
                 LinearLayout layout = (LinearLayout) findViewById(R.id.status);
-                layout.setVisibility(View.VISIBLE);
+                if(layout.getVisibility() != View.VISIBLE){
+                    layout.setVisibility(View.VISIBLE);
+                }
                 statusText.setText(statusData);
-//                Log.d(TAG, order.getStatus());
+                Toast.makeText(Checkout.this, statusData, Toast.LENGTH_SHORT);
+                //                Log.d(TAG, order.getStatus());
             }
 
             @Override
@@ -99,6 +113,10 @@ public class Checkout extends AppCompatActivity {
 
     public void onServe(View view) {
         FirebaseDatabase.getInstance().getReference("order").child("status").setValue("Your order is ready");
+//        checkBtn.setVisibility(View.VISIBLE);
+//        serveBtn.setVisibility(View.INVISIBLE);
+//        checkBtn.setEnabled(true);
+//        serveBtn.setEnabled(false);
     }
 
     public void backOnBtn(View view){

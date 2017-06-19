@@ -8,4 +8,6 @@
     <color name="sunflower">#f1c40f</color>
     <color name="brown">#784212</color>
     <color name="light_brown">#F9E79F</color>
+    <color name="disable">#D3D3D3</color>
+
 </resources>

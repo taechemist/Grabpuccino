@@ -14,6 +14,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseListAdapter;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -118,5 +119,11 @@ public class HomeActivity extends AppCompatActivity {
         } else {
             munuOverlay.setVisibility(View.GONE);
         }
+    }
+
+    public void signOut(View view) {
+        FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+        startActivity(intent);
     }
 }
