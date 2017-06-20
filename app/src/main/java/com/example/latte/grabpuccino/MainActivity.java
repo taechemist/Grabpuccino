@@ -68,25 +68,31 @@ public class MainActivity extends AppCompatActivity {
     public void createAccount(View view) {
         String email = emailText.getText().toString();
         String password = passwordText.getText().toString();
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
+        if(email.matches("")|| password.matches("")) {
 
-                        // If sign in fails, display a message to the user. If sign in succeeds
-                        // the auth state listener will be notified and logic to handle the
-                        // signed in user can be handled in the listener.
-                        if (!task.isSuccessful()) {
-                            Toast.makeText(MainActivity.this, R.string.regis_failed,
-                                    Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(MainActivity.this, R.string.regis_successed, Toast.LENGTH_SHORT).show();
-                            emailText.setText("");
-                            passwordText.setText("");
-                        }
+            Toast.makeText(MainActivity.this, "Please fill email and password", Toast.LENGTH_SHORT).show();
+
+        }else {
+            mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
+
+                    // If sign in fails, display a message to the user. If sign in succeeds
+                    // the auth state listener will be notified and logic to handle the
+                    // signed in user can be handled in the listener.
+                    if (!task.isSuccessful()) {
+                        Toast.makeText(MainActivity.this, R.string.regis_failed,
+                                Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(MainActivity.this, R.string.regis_successed, Toast.LENGTH_SHORT).show();
+                        emailText.setText("");
+                        passwordText.setText("");
                     }
-                });
+                }
+            });
+        }
+
     }
 
     public void signIn(View view) {
@@ -113,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
                     });
         } else {
             Toast.makeText(this, R.string.please_insert_email_and_password, Toast.LENGTH_SHORT).show();
-            Toast.makeText(this, R.string.you_are_here, Toast.LENGTH_SHORT).show();
+
         }
     }
 
