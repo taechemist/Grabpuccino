@@ -60,6 +60,10 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        TextView useremailText = (TextView) findViewById(R.id.useremailText);
+        String useremailData = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        useremailText.setText(useremailData);
+
     }
 
     private void getVendorData() {
@@ -117,7 +121,16 @@ public class HomeActivity extends AppCompatActivity {
         if (munuOverlay.getVisibility() == View.GONE) {
             munuOverlay.setVisibility(View.VISIBLE);
         } else {
+            //Blank
+        }
+    }
+
+    public void onClickArrowBackAtMenuOverlay(View view) {
+        FrameLayout munuOverlay = (FrameLayout) findViewById(R.id.menuOverlay);
+        if (munuOverlay.getVisibility() == View.VISIBLE) {
             munuOverlay.setVisibility(View.GONE);
+        } else {
+            //Blank
         }
     }
 

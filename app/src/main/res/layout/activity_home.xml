@@ -106,13 +106,20 @@
             android:layout_gravity="center"
             android:orientation="vertical">
 
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/back_arrow"
+                android:layout_marginTop="20dp"
+                android:onClick="onClickArrowBackAtMenuOverlay"
+                />
 
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:src="@drawable/user" />
 
             <TextView
@@ -120,8 +127,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="Hello," />
 
-                android:text="kochakorn.k@gmail.com" />
+            <TextView
+                style="@style/TextView.Brown.Title3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/useremailText"
+                android:text="email..." />
 
             <Button
                 android:id="@+id/statusBtn"
